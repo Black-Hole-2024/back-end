@@ -1,0 +1,56 @@
+pip install Flask Flask-SQLAlchemy Flask-JWT-Extended bcrypt Flask-Mail
+pip install flask_bcrypt
+
+
+POST http://127.0.0.1:5000/signup
+      {
+    "fullname": "John Doe",
+    "username": "masrialx",
+    "email": "masrialemu404@gmail.com",
+    "password": "1234",
+    "confirm_password": "1234"
+       }
+
+
+POST http://127.0.0.1:5000/verify
+   {
+  "username": "masrialx",
+  "verification_code": "646136"  /// email masrialemu404@gmail.com 
+   }
+
+
+
+POST http://127.0.0.1:5000/login
+     {
+    "username": "masrialx",
+    "password": "1234"
+  
+      }
+
+
+POST http://127.0.0.1:5000/request_password_reset
+     {
+     "email": "masrialemu404@gmail.com"
+
+     }
+
+
+
+POST http://127.0.0.1:5000/reset_password
+       {
+    "reset_code": "673550",
+    "new_password": "12345",
+    "confirm_new_password": "12345" 
+     }     
+
+
+GET http://127.0.0.1:5000/users  //admin
+     Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMTQ4NjkxNywianRpIjoiYmRkYTdiZGUtZTc4MC00ZmM0LThlZWEtYTUwYTNhOGFjMjQ2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6Im1hc3JpNDA0IiwiaXNfYWRtaW4iOnRydWV9LCJuYmYiOjE3MjE0ODY5MTcsImNzcmYiOiJkY2Q4ZDE2ZS1lZTYyLTQ2MjctYjViMS1jYWViNzhlMThlMjgiLCJleHAiOjE3MjE0ODc4MTd9.mFjCby-MZB6N2m6PrpNLqo5F-8RAP_EREj7cIDJab8Y
+
+
+POST http://127.0.0.1:5000/block_user  ///admin
+     Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMTQ4NjkxNywianRpIjoiYmRkYTdiZGUtZTc4MC00ZmM0LThlZWEtYTUwYTNhOGFjMjQ2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6Im1hc3JpNDA0IiwiaXNfYWRtaW4iOnRydWV9LCJuYmYiOjE3MjE0ODY5MTcsImNzcmYiOiJkY2Q4ZDE2ZS1lZTYyLTQ2MjctYjViMS1jYWViNzhlMThlMjgiLCJleHAiOjE3MjE0ODc4MTd9.mFjCby-MZB6N2m6PrpNLqo5F-8RAP_EREj7cIDJab8Y
+      {
+      "username": "masrialx",
+
+      }
