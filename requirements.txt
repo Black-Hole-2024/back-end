@@ -2,3 +2,7 @@ Flask==3.0.0
 SQLAlchemy==1.4.29
 gunicorn==20.1.0
 flask_sqlalchemy
+flask_bcrypt
+lask-JWT-Extended 
+bcrypt 
+Flask-Mail
