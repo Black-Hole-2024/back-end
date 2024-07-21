@@ -13,12 +13,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirnam
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'masri12345'
 app.config['JWT_SECRET_KEY'] = 'masri12345'
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(weeks=1) 
 
 # Email configuration (use your own SMTP server details)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USERNAME'] = 'masrialemu@gmail.com'
-app.config['MAIL_PASSWORD'] = 'mwxb ixae valq szin'  # Make sure to handle sensitive data securely
+app.config['MAIL_PASSWORD'] = 'mwxb ixae valq szin'  
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
@@ -82,7 +83,6 @@ def signup():
             <p style="font-size: 16px; color: #555555;">Hi {fullname},</p>
             <p style="font-size: 16px; color: #555555;">Thank you for signing up! To complete your registration, please use the following verification code:</p>
             <h3 style="font-size: 24px; color: #007bff;">{verification_code}</h3>
-            <p style="font-size: 16px; color: #555555;">If you did not create an account, please ignore this email.</p>
             <p style="font-size: 16px; color: #555555;">Best regards,</p>
             <p style="font-size: 16px; color: #555555;">The Team</p>
         </div>
@@ -187,7 +187,7 @@ def request_password_reset():
 
     # Generate a 6-digit reset code
     reset_code = str(random.randint(100000, 999999))
-    reset_token_expiration = datetime.utcnow() + timedelta(minutes=15)  # Code valid for 15 minutes
+    reset_token_expiration = datetime.utcnow() + timedelta(minutes=60)  # Code valid for 15 minutes
 
     user.reset_token = reset_code
     user.reset_token_expiration = reset_token_expiration
@@ -202,7 +202,7 @@ def request_password_reset():
             <p style="font-size: 16px; color: #555555;">Hi {user.fullname},</p>
             <p style="font-size: 16px; color: #555555;">We received a request to reset your password. Use the following code to reset your password:</p>
             <h3 style="font-size: 24px; color: #007bff;">{reset_code}</h3>
-            <p style="font-size: 16px; color: #555555;">This code is valid for 15 minutes. If you did not request a password reset, please ignore this email.</p>
+            <p style="font-size: 16px; color: #555555;">This code is valid for 1hr. If you did not request a password reset, please ignore this email.</p>
             <p style="font-size: 16px; color: #555555;">Best regards,</p>
             <p style="font-size: 16px; color: #555555;">The Team</p>
         </div>
